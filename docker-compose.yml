@@ -1,0 +1,75 @@
+version: "3.8"
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: airflow
+      POSTGRES_PASSWORD: airflow
+      POSTGRES_DB: analytics
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+
+  init-warehouse:
+    image: apache/airflow:2.8.1-python3.9
+    container_name: init-warehouse
+    depends_on:
+      - postgres
+    environment:
+      ANALYTICS_DB_HOST: postgres
+      ANALYTICS_DB_PORT: 5432
+      ANALYTICS_DB_NAME: analytics
+      ANALYTICS_DB_USER: airflow
+      ANALYTICS_DB_PASSWORD: airflow
+      PYTHONPATH: /opt/airflow
+    volumes:
+      - ./project:/opt/airflow/project
+      - ./scripts:/opt/airflow/scripts
+    command: >
+      bash -c "python scripts/init_warehouse.py"
+    restart: "no"
+
+
+  airflow:
+    image: apache/airflow:2.8.1-python3.9
+    container_name: airflow_pythonProject
+    restart: always
+    build: .
+    depends_on:
+      - postgres
+    environment:
+      AIRFLOW__CORE__EXECUTOR: SequentialExecutor
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: sqlite:////opt/airflow/airflow.db
+      AIRFLOW__CORE__LOAD_EXAMPLES: "false"
+      PYTHONPATH: /opt/airflow
+
+      ANALYTICS_DB_HOST: postgres
+      ANALYTICS_DB_PORT: 5432
+      ANALYTICS_DB_NAME: analytics
+      ANALYTICS_DB_USER: airflow
+      ANALYTICS_DB_PASSWORD: airflow
+
+    volumes:
+      - ./dags:/opt/airflow/dags
+      - ./logs:/opt/airflow/logs
+      - ./plugins:/opt/airflow/plugins
+      - ./project:/opt/airflow/project
+      - ./data:/opt/airflow/data
+
+    ports:
+      - "8080:8080"
+
+    command: >
+      bash -c "
+      airflow db migrate;
+      airflow users create --username admin --password admin --firstname Admin --lastname User --role Admin --email admin@example.com;
+      airflow webserver & airflow scheduler;
+      "
+
+volumes:
+  postgres-data:

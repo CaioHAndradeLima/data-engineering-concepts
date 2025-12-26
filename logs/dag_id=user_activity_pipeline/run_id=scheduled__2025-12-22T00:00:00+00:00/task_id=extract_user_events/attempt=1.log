@@ -1,0 +1,31 @@
+[2025-12-23T18:17:05.805+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: user_activity_pipeline.extract_user_events scheduled__2025-12-22T00:00:00+00:00 [queued]>
+[2025-12-23T18:17:05.807+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: user_activity_pipeline.extract_user_events scheduled__2025-12-22T00:00:00+00:00 [queued]>
+[2025-12-23T18:17:05.807+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 3
+[2025-12-23T18:17:05.811+0000] {taskinstance.py:2191} INFO - Executing <Task(PythonOperator): extract_user_events> on 2025-12-22 00:00:00+00:00
+[2025-12-23T18:17:05.813+0000] {standard_task_runner.py:60} INFO - Started process 102 to run task
+[2025-12-23T18:17:05.814+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'user_activity_pipeline', 'extract_user_events', 'scheduled__2025-12-22T00:00:00+00:00', '--job-id', '5', '--raw', '--subdir', 'DAGS_FOLDER/user_activity_pipeline.py', '--cfg-path', '/tmp/tmpxdo76p2y']
+[2025-12-23T18:17:05.815+0000] {standard_task_runner.py:88} INFO - Job 5: Subtask extract_user_events
+[2025-12-23T18:17:05.826+0000] {task_command.py:423} INFO - Running <TaskInstance: user_activity_pipeline.extract_user_events scheduled__2025-12-22T00:00:00+00:00 [running]> on host 984488adc495
+[2025-12-23T18:17:05.891+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='user_activity_pipeline' AIRFLOW_CTX_TASK_ID='extract_user_events' AIRFLOW_CTX_EXECUTION_DATE='2025-12-22T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-12-22T00:00:00+00:00'
+[2025-12-23T18:17:05.892+0000] {logging_mixin.py:188} INFO - [RAW] Loaded raw events from /opt/airflow/project/data/raw/2025-12-22/events.json
+[2025-12-23T18:17:05.893+0000] {python.py:201} INFO - Done. Returned value was: None
+[2025-12-23T18:17:05.894+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=user_activity_pipeline, task_id=extract_user_events, execution_date=20251222T000000, start_date=20251223T181705, end_date=20251223T181705
+[2025-12-23T18:17:05.912+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-12-23T18:17:05.920+0000] {taskinstance.py:3280} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-12-23T21:13:14.685+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: user_activity_pipeline.extract_user_events scheduled__2025-12-22T00:00:00+00:00 [queued]>
+[2025-12-23T21:13:14.687+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: user_activity_pipeline.extract_user_events scheduled__2025-12-22T00:00:00+00:00 [queued]>
+[2025-12-23T21:13:14.687+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 3
+[2025-12-23T21:13:14.691+0000] {taskinstance.py:2191} INFO - Executing <Task(PythonOperator): extract_user_events> on 2025-12-22 00:00:00+00:00
+[2025-12-23T21:13:14.693+0000] {standard_task_runner.py:60} INFO - Started process 102 to run task
+[2025-12-23T21:13:14.695+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'user_activity_pipeline', 'extract_user_events', 'scheduled__2025-12-22T00:00:00+00:00', '--job-id', '5', '--raw', '--subdir', 'DAGS_FOLDER/user_activity_pipeline.py', '--cfg-path', '/tmp/tmp15vn9dt5']
+[2025-12-23T21:13:14.696+0000] {standard_task_runner.py:88} INFO - Job 5: Subtask extract_user_events
+[2025-12-23T21:13:14.710+0000] {task_command.py:423} INFO - Running <TaskInstance: user_activity_pipeline.extract_user_events scheduled__2025-12-22T00:00:00+00:00 [running]> on host 6dbc5099e563
+[2025-12-23T21:13:14.784+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='user_activity_pipeline' AIRFLOW_CTX_TASK_ID='extract_user_events' AIRFLOW_CTX_EXECUTION_DATE='2025-12-22T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-12-22T00:00:00+00:00'
+[2025-12-23T21:13:14.784+0000] {logging_mixin.py:188} INFO - [RAW] No raw data found, fetching from API
+[2025-12-23T21:13:14.784+0000] {logging_mixin.py:188} INFO - [EXTRACT] Fetching data (attempt 1/3)
+[2025-12-23T21:13:14.978+0000] {logging_mixin.py:188} INFO - [EXTRACT] Retrieved 10 events
+[2025-12-23T21:13:14.981+0000] {logging_mixin.py:188} INFO - [RAW] Saved raw events to /opt/airflow/project/data/raw/2025-12-22/events.json
+[2025-12-23T21:13:14.982+0000] {python.py:201} INFO - Done. Returned value was: None
+[2025-12-23T21:13:14.985+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=user_activity_pipeline, task_id=extract_user_events, execution_date=20251222T000000, start_date=20251223T211314, end_date=20251223T211314
+[2025-12-23T21:13:15.014+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-12-23T21:13:15.027+0000] {taskinstance.py:3280} INFO - 1 downstream tasks scheduled from follow-on schedule check
