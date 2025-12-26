@@ -1699,3 +1699,24 @@ Traceback (most recent call last):
 ImportError: cannot import name 'check_gold_loaded' from 'project.quality.gold_checks' (/opt/airflow/project/quality/gold_checks.py)
 [2025-12-26T20:17:21.089+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/user_activity_pipeline.py
 [2025-12-26T20:17:21.101+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/user_activity_pipeline.py took 0.030 seconds
+[2025-12-26T20:17:51.317+0000] {processor.py:161} INFO - Started process (PID=2105) to work on /opt/airflow/dags/user_activity_pipeline.py
+[2025-12-26T20:17:51.318+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/user_activity_pipeline.py for tasks to queue
+[2025-12-26T20:17:51.319+0000] {logging_mixin.py:188} INFO - [2025-12-26T20:17:51.319+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/user_activity_pipeline.py
+[2025-12-26T20:17:51.335+0000] {processor.py:840} INFO - DAG(s) 'user_activity_pipeline' retrieved from /opt/airflow/dags/user_activity_pipeline.py
+[2025-12-26T20:17:51.557+0000] {logging_mixin.py:188} INFO - [2025-12-26T20:17:51.557+0000] {dag.py:3036} INFO - Sync 1 DAGs
+[2025-12-26T20:17:51.568+0000] {logging_mixin.py:188} INFO - [2025-12-26T20:17:51.568+0000] {dag.py:3823} INFO - Setting next_dagrun for user_activity_pipeline to 2025-12-26 00:00:00+00:00, run_after=2025-12-27 00:00:00+00:00
+[2025-12-26T20:17:51.580+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/user_activity_pipeline.py took 0.265 seconds
+[2025-12-26T20:18:22.249+0000] {processor.py:161} INFO - Started process (PID=2106) to work on /opt/airflow/dags/user_activity_pipeline.py
+[2025-12-26T20:18:22.250+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/user_activity_pipeline.py for tasks to queue
+[2025-12-26T20:18:22.251+0000] {logging_mixin.py:188} INFO - [2025-12-26T20:18:22.251+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/user_activity_pipeline.py
+[2025-12-26T20:18:22.273+0000] {processor.py:840} INFO - DAG(s) 'user_activity_pipeline' retrieved from /opt/airflow/dags/user_activity_pipeline.py
+[2025-12-26T20:18:22.286+0000] {logging_mixin.py:188} INFO - [2025-12-26T20:18:22.286+0000] {dag.py:3036} INFO - Sync 1 DAGs
+[2025-12-26T20:18:22.295+0000] {logging_mixin.py:188} INFO - [2025-12-26T20:18:22.295+0000] {dag.py:3823} INFO - Setting next_dagrun for user_activity_pipeline to 2025-12-26 00:00:00+00:00, run_after=2025-12-27 00:00:00+00:00
+[2025-12-26T20:18:22.304+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/user_activity_pipeline.py took 0.060 seconds
+[2025-12-26T20:18:52.478+0000] {processor.py:161} INFO - Started process (PID=2107) to work on /opt/airflow/dags/user_activity_pipeline.py
+[2025-12-26T20:18:52.479+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/user_activity_pipeline.py for tasks to queue
+[2025-12-26T20:18:52.480+0000] {logging_mixin.py:188} INFO - [2025-12-26T20:18:52.480+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/user_activity_pipeline.py
+[2025-12-26T20:18:52.496+0000] {processor.py:840} INFO - DAG(s) 'user_activity_pipeline' retrieved from /opt/airflow/dags/user_activity_pipeline.py
+[2025-12-26T20:18:52.507+0000] {logging_mixin.py:188} INFO - [2025-12-26T20:18:52.507+0000] {dag.py:3036} INFO - Sync 1 DAGs
+[2025-12-26T20:18:52.517+0000] {logging_mixin.py:188} INFO - [2025-12-26T20:18:52.517+0000] {dag.py:3823} INFO - Setting next_dagrun for user_activity_pipeline to 2025-12-26 00:00:00+00:00, run_after=2025-12-27 00:00:00+00:00
+[2025-12-26T20:18:52.526+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/user_activity_pipeline.py took 0.051 seconds
