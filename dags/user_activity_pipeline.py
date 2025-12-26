@@ -1,6 +1,8 @@
 from datetime import datetime
 from airflow import DAG
 from airflow.operators.python import PythonOperator
+from project.quality.silver_checks import check_silver_not_empty
+from project.quality.gold_checks import check_gold_loaded
 
 from project.etl import extract, transform, load
 
@@ -60,4 +62,16 @@ with DAG(
         op_kwargs={"execution_date": "{{ ds }}"},
     )
 
-    extract_op >> transform_op >> load_op
+    silver_check_op = PythonOperator(
+        task_id="check_silver_quality",
+        python_callable=check_silver_not_empty,
+        op_kwargs={"execution_date": "{{ ds }}"},
+    )
+
+    gold_check_op = PythonOperator(
+        task_id="check_gold_quality",
+        python_callable=check_gold_loaded,
+        op_kwargs={"execution_date": "{{ ds }}"},
+    )
+
+    extract_op >> transform_op >> load_op >> silver_check_op >> gold_check_op
