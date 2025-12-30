@@ -28,12 +28,10 @@ RAW_DIR = os.path.join(DATA_DIR, "raw")
 RAW_EVENTS_DIR = os.path.join(RAW_DIR, "events")
 
 # SILVER — cleaned / normalized
-SILVER_DIR = os.path.join(DATA_DIR, "silver")
-SILVER_EVENTS_DIR = os.path.join(SILVER_DIR, "events")
+SILVER_EVENTS_DIR = "/opt/spark/data/silver/events"
 
 # GOLD — analytics-ready (file-based if needed later)
-GOLD_DIR = os.path.join(DATA_DIR, "gold")
-
+GOLD_DIR = "/opt/spark/data/gold"
 # Standard filenames
 EVENTS_FILENAME = "events.json"
 
