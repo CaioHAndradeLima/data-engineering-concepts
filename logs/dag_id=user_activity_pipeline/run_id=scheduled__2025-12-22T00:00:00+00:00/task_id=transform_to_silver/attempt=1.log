@@ -40,3 +40,54 @@
 [2025-12-23T22:45:48.806+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=user_activity_pipeline, task_id=transform_to_silver, execution_date=20251222T000000, start_date=20251223T224548, end_date=20251223T224548
 [2025-12-23T22:45:48.819+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
 [2025-12-23T22:45:48.830+0000] {taskinstance.py:3280} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2026-01-01T19:44:08.409+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: user_activity_pipeline.transform_to_silver scheduled__2025-12-22T00:00:00+00:00 [queued]>
+[2026-01-01T19:44:08.412+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: user_activity_pipeline.transform_to_silver scheduled__2025-12-22T00:00:00+00:00 [queued]>
+[2026-01-01T19:44:08.412+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 3
+[2026-01-01T19:44:08.416+0000] {taskinstance.py:2191} INFO - Executing <Task(PythonOperator): transform_to_silver> on 2025-12-22 00:00:00+00:00
+[2026-01-01T19:44:08.417+0000] {standard_task_runner.py:60} INFO - Started process 170 to run task
+[2026-01-01T19:44:08.418+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'user_activity_pipeline', 'transform_to_silver', 'scheduled__2025-12-22T00:00:00+00:00', '--job-id', '10', '--raw', '--subdir', 'DAGS_FOLDER/user_activity_pipeline.py', '--cfg-path', '/tmp/tmp696q3jwq']
+[2026-01-01T19:44:08.419+0000] {standard_task_runner.py:88} INFO - Job 10: Subtask transform_to_silver
+[2026-01-01T19:44:08.431+0000] {task_command.py:423} INFO - Running <TaskInstance: user_activity_pipeline.transform_to_silver scheduled__2025-12-22T00:00:00+00:00 [running]> on host af33cbcfb695
+[2026-01-01T19:44:08.499+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='user_activity_pipeline' AIRFLOW_CTX_TASK_ID='transform_to_silver' AIRFLOW_CTX_EXECUTION_DATE='2025-12-22T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-12-22T00:00:00+00:00'
+[2026-01-01T19:44:08.500+0000] {taskinstance.py:2698} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/operators/python.py", line 199, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.9/site-packages/airflow/operators/python.py", line 216, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/user_activity_pipeline.py", line 16, in transform_task
+    transform(execution_date)
+  File "/opt/airflow/project/etl.py", line 22, in transform
+    transform_event(execution_date)
+  File "/opt/airflow/project/transformation/transform_event.py", line 35, in transform_event
+    os.makedirs(silver_dir, exist_ok=True)
+  File "/usr/local/lib/python3.9/os.py", line 215, in makedirs
+    makedirs(head, exist_ok=exist_ok)
+  File "/usr/local/lib/python3.9/os.py", line 215, in makedirs
+    makedirs(head, exist_ok=exist_ok)
+  File "/usr/local/lib/python3.9/os.py", line 215, in makedirs
+    makedirs(head, exist_ok=exist_ok)
+  [Previous line repeated 1 more time]
+  File "/usr/local/lib/python3.9/os.py", line 225, in makedirs
+    mkdir(name, mode)
+PermissionError: [Errno 13] Permission denied: '/opt/spark'
+[2026-01-01T19:44:08.501+0000] {taskinstance.py:1138} INFO - Marking task as UP_FOR_RETRY. dag_id=user_activity_pipeline, task_id=transform_to_silver, execution_date=20251222T000000, start_date=20260101T194408, end_date=20260101T194408
+[2026-01-01T19:44:08.504+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 10 for task transform_to_silver ([Errno 13] Permission denied: '/opt/spark'; 170)
+[2026-01-01T19:44:08.517+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2026-01-01T19:44:08.524+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-01-01T21:24:58.328+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: user_activity_pipeline.transform_to_silver scheduled__2025-12-22T00:00:00+00:00 [queued]>
+[2026-01-01T21:24:58.330+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: user_activity_pipeline.transform_to_silver scheduled__2025-12-22T00:00:00+00:00 [queued]>
+[2026-01-01T21:24:58.330+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 3
+[2026-01-01T21:24:58.334+0000] {taskinstance.py:2191} INFO - Executing <Task(PythonOperator): transform_to_silver> on 2025-12-22 00:00:00+00:00
+[2026-01-01T21:24:58.335+0000] {standard_task_runner.py:60} INFO - Started process 328 to run task
+[2026-01-01T21:24:58.336+0000] {standard_task_runner.py:87} INFO - Running: ['airflow', 'tasks', 'run', 'user_activity_pipeline', 'transform_to_silver', 'scheduled__2025-12-22T00:00:00+00:00', '--job-id', '11', '--raw', '--subdir', 'DAGS_FOLDER/user_activity_pipeline.py', '--cfg-path', '/tmp/tmphsspczd1']
+[2026-01-01T21:24:58.337+0000] {standard_task_runner.py:88} INFO - Job 11: Subtask transform_to_silver
+[2026-01-01T21:24:58.350+0000] {task_command.py:423} INFO - Running <TaskInstance: user_activity_pipeline.transform_to_silver scheduled__2025-12-22T00:00:00+00:00 [running]> on host 07e7948992e5
+[2026-01-01T21:24:58.414+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='user_activity_pipeline' AIRFLOW_CTX_TASK_ID='transform_to_silver' AIRFLOW_CTX_EXECUTION_DATE='2025-12-22T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-12-22T00:00:00+00:00'
+[2026-01-01T21:24:58.415+0000] {logging_mixin.py:188} INFO - [SILVER] Stored 10 cleaned events for 2025-12-22
+[2026-01-01T21:24:58.415+0000] {python.py:201} INFO - Done. Returned value was: None
+[2026-01-01T21:24:58.416+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=user_activity_pipeline, task_id=transform_to_silver, execution_date=20251222T000000, start_date=20260101T212458, end_date=20260101T212458
+[2026-01-01T21:24:58.441+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2026-01-01T21:24:58.449+0000] {taskinstance.py:3280} INFO - 1 downstream tasks scheduled from follow-on schedule check
